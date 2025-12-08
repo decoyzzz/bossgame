@@ -56,5 +56,6 @@ strings = {
     "=your_turn=" : "==============YOUR TURN===============",
     "crit" : "Crit",
     "heals" : "Heals",
-    "freeze" : "Freeze"
+    "freeze" : "Freeze",
+    "snow_avalanche" : "Snow Avalanche"
 }

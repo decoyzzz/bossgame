@@ -56,5 +56,6 @@ strings = {
     "your_spells" : "Twoje zaklęcia",
     "crit" : "Kryt",
     "heals" : "Regeneruje",
-    "freeze" : "Zamrożenie"
+    "freeze" : "Zamrożenie",
+    "snow_avalanche" : "Lawina Śnieżna"
 }

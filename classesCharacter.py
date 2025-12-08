@@ -188,7 +188,7 @@ class Player(Character):
                             self.castSpell(self.spells[choice-1], enemy)
                             return
                         elif choice == 7:
-                            self.castSpell(IceSpell("Снежная лавина", 500, 500, 0, 1, 10), enemy)
+                            self.castSpell(IceSpell(s('snow_avalanche'), 500, 500, 0, 1, 10), enemy)
                             return
 
 class Enemy(Character):
