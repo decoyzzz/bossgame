@@ -32,11 +32,11 @@ class FireSpell(Spell):
             clear()
             print(ASCII.drawfireballsucces)
             arcade.play_sound(sounds.fireballsound)
-            print (f"{self.name} {s('deals')} {self.damage} {s('damage')}! {s('health')} {target.name}: {target.hp}")
+            print (f"{spellcaster.name} casts {self.name} {s('and_deals')} {self.damage} {s('damage')}! {s('health')} {target.name}: {target.hp}")
             
             #chance to trigger fire DOT damage
             if random.random() < self.burningChance:
-                target.fire_dot_damage = self.burningStrength
+                target.fire_dot_damage = max(self.burningStrength, target.fire_dot_damage + 5)
 
                 time.sleep(1.9)
                 clear()
@@ -75,7 +75,7 @@ class IceSpell(Spell):
             clear()
             print(ASCII.drawiceshardsucces)
             arcade.play_sound(sounds.iceshardsound)
-            print(f"{self.name} {s('deals')} {self.damage} {s('damage')}! {s('health')} {target.name}: {target.hp}")
+            print(f"{spellcaster.name} casts {self.name} {s('and_deals')} {self.damage} {s('damage')}! {s('health')} {target.name}: {target.hp}")
 
             if random.random() < self.freezeChance:
                 target.freezebuildup = self.freezeStrength

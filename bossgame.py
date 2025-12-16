@@ -9,7 +9,7 @@ import sounds
 import ASCII
 from lib import chooseLanguage, get_key, s
 
-from classesCharacter import Player, Enemy
+from classesCharacter import Player, Enemy, Mage
 from classesSpell import FireSpell, IceSpell, HealSpell
 from classesWeapon import Weapon
 from classesPotion import HealPotion, ManaPotion
@@ -126,6 +126,30 @@ time.sleep(3)
 # player.spells.append(FireSpell(s("fireball"), 2, 4, 3, 0.5, 3))
 # player.spells.append(IceSpell(s("iceshard"), 1, 2, 3, 0.5, 2))
 # player.spells.append(FireSpell(s("ignition"), 0, 1, 2, 1, 2))
+
+#4th enemy creating
+evilMage = Mage("Evil mage", 200)
+#evilMage.spells.append(FireSpell(s("ignition"), 1, 5, 0, 1, 10))
+
+# giving evil mage the spell, that player didnt choose
+if any(spell.name == s("fireball") for spell in player.spells):
+    evilMage.spells.append(IceSpell(s("iceshard"), 5, 10, 15, 0.4, 2))
+else:
+    evilMage.spells.append(FireSpell(s("fireball"), 10, 20, 15, 0.4, 15))
+
+while evilMage.alive == True:
+    player.makeMove(evilMage)
+    time.sleep(1.9)
+
+    evilMage.makeMove(player)
+    time.sleep(1.9)
+
+#4th victory screen
+clear()
+print(ASCII.drawtrophy)
+arcade.play_sound(sounds.victorysound)
+print(f"{s('you_defeated')}: {evilMage.name}!")
+time.sleep(3)
 
 print("Press any key to exit...")
 get_key()
