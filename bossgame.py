@@ -74,7 +74,7 @@ time.sleep(3)
 
 #Giving the player a sword 
 clear()
-print(ASCII.drawtemplate)
+print(ASCII.drawswordcrit)
 sword = Weapon(s("sword"), 8, 12, 10, 0.5, 2, ASCII.drawsword, ASCII.drawswordcrit, sounds.swordsound)
 player.weapons.append(sword)
 print(f"{s('new_weapon_recieved')}: {sword.name}!")
@@ -100,7 +100,7 @@ time.sleep(3)
 # Giving the player 1 spell to choose
 while len(player.spells) == 1:
     clear()
-    print(ASCII.drawtemplate)
+    print(ASCII.drawspellchoice)
     print(f"{s('choose_a_spell')}:")
     print(f"[1]{s('fireball')}! [2]{s('iceshard')}")
     choice = get_key()

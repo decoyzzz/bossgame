@@ -107,7 +107,7 @@ class Player(Character):
         elif self.freezebuildup > 0:
 
             clear()
-            print(ASCII.drawtemplate)
+            print(self.drawfreeze)
             arcade.play_sound(sounds.iceshardsound)
             print(f"{self.name} {s('is_freezed_for')} {self.freezebuildup} {s('more_moves!')}")
             
