@@ -61,5 +61,7 @@ strings = {
     'is_recovering_his_mana' : "regenruję swoją manę...",
     'did_nothing' : "nic nie robi...",
     'casts' : "rzuca",
-    'evil_mage' : "Zły mag"
+    'evil_mage' : "Zły mag",
+    'the_worm_kings_caverns' : "Jaskinie Króla Robaków",
+    'mage_citadels' : "Cytadele Magów"
 }

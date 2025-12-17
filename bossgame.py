@@ -38,8 +38,14 @@ match playername:
     case _:
         player = Player(playername, 100, 0)
 
+#level 1 intro
+clear()
+arcade.play_sound(sounds.lvl1_introsound)
+print(ASCII.drawlevel1.format(levelname=s('the_worm_kings_caverns')))
+time.sleep(4)
+
 # Giving the player a weapon: Weapon(name, minDamage, maxDamage, +manaPerHit, critChance, critMultiplier, image, critImage, sound)
-stick = Weapon(s("wooden_stick"), 5, 5, 5, 0.2, 5, None, None, sounds.sticksound)
+stick = Weapon(s("wooden_stick"), 5, 5, 5, 0.2, 6, None, None, sounds.sticksound)
 player.weapons.append(stick)
 
 # Giving the player a potion
@@ -127,6 +133,13 @@ time.sleep(3)
 # player.spells.append(IceSpell(s("iceshard"), 1, 2, 3, 0.5, 2))
 # player.spells.append(FireSpell(s("ignition"), 0, 1, 2, 1, 2))
 
+player.getHealed(100)
+#level 2 intro
+clear()
+arcade.play_sound(sounds.lvl2_introsound)
+print(ASCII.drawlevel2.format(levelname=s('mage_citadels')))
+time.sleep(5)
+
 #4th enemy creating
 evilMage = Mage(s('evil_mage'), 200)
 evilMage.spells.append(FireSpell(s("ignition"), 1, 5, 0, 0.9, 10))
@@ -151,5 +164,6 @@ arcade.play_sound(sounds.victorysound)
 print(f"{s('you_defeated')}: {evilMage.name}!")
 time.sleep(3)
 
+print("TO BE CONTINUED...")
 print("Press any key to exit...")
 get_key()

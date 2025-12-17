@@ -61,5 +61,7 @@ strings = {
     'is_recovering_his_mana' : "is recovering his mana...",
     'did_nothing' : "did nothing...",
     'casts' : "casts",
-    'evil_mage' : "Evil mage"
+    'evil_mage' : "Evil mage",
+    'the_worm_kings_caverns' : "The Worm King's Caverns",
+    'mage_citadels' : "Mage Citadels"
 }
