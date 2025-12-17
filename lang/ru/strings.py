@@ -58,5 +58,9 @@ strings = {
     "crit" : "Крит",
     "heals" : "Восстанавливает",
     "freeze" : "Заморозка",
-    "snow_avalanche" : "Снежная лавина"
+    "snow_avalanche" : "Снежная лавина",
+    'is_recovering_his_mana' : "восстанавливает свою ману...",
+    'did_nothing' : "ничего не делает...",
+    'casts' : "использует",
+    'evil_mage' : "Злой маг"
 }

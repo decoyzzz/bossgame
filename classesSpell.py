@@ -30,9 +30,9 @@ class FireSpell(Spell):
             spellcaster.mana -= self.manaCost
             
             clear()
-            print(ASCII.drawfireballsucces)
+            print(spellcaster.drawfireball)
             arcade.play_sound(sounds.fireballsound)
-            print (f"{spellcaster.name} casts {self.name} {s('and_deals')} {self.damage} {s('damage')}! {s('health')} {target.name}: {target.hp}")
+            print (f"{spellcaster.name} {s('casts')} {self.name} {s('and_deals')} {self.damage} {s('damage')}! {s('health')} {target.name}: {target.hp}")
             
             #chance to trigger fire DOT damage
             if random.random() < self.burningChance:
@@ -40,7 +40,7 @@ class FireSpell(Spell):
 
                 time.sleep(1.9)
                 clear()
-                print(ASCII.drawbossfiredamage)
+                print(target.drawfiredamage)
                 arcade.play_sound(sounds.burningsound)
                 print(f"{target.name} {s('caught_fire_and_will_take_burn_damage')}!")
         
@@ -49,7 +49,7 @@ class FireSpell(Spell):
             spellcaster.getDamage(5)
            
             clear()
-            print(ASCII.drawfireballfailed)
+            print(spellcaster.drawfireballfailed)
             print (f"{self.name} {s('exploded_in')} {spellcaster.name}{s('s_hand')} {s('and_dealt_5_damage')}! {s('health')}: {spellcaster.hp}")
 
     def info(self):
@@ -73,21 +73,20 @@ class IceSpell(Spell):
             target.getDamage(self.damage)
 
             clear()
-            print(ASCII.drawiceshardsucces)
+            print(spellcaster.drawiceshard)
             arcade.play_sound(sounds.iceshardsound)
-            print(f"{spellcaster.name} casts {self.name} {s('and_deals')} {self.damage} {s('damage')}! {s('health')} {target.name}: {target.hp}")
+            print(f"{spellcaster.name} {s('casts')} {self.name} {s('and_deals')} {self.damage} {s('damage')}! {s('health')} {target.name}: {target.hp}")
 
             if random.random() < self.freezeChance:
                 target.freezebuildup = self.freezeStrength
 
                 time.sleep(1.9)
                 clear()
-                print(ASCII.drawbossfreeze)
+                print(target.drawfreeze)
                 print(f"{self.name} {s('freezed')} {target.name} {s('for')} {self.freezeStrength} {s('turns')}!")
                                     
             return
                                 
-
         #If there is not enough mana
         else:
             spellcaster.getDamage(5)

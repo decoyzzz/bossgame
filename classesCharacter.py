@@ -66,6 +66,13 @@ class Player(Character):
         self.weapons=[]
         self.potions=[]
 
+        self.drawfireball = ASCII.drawfireballsucces
+        self.drawfiredamage = ASCII.drawfiredamageplayer
+        self.drawfireballfailed = ASCII.drawfireballfailed
+        self.drawiceshard = ASCII.drawiceshardsucces
+        self.drawfreeze = ASCII.drawfreezeplayer
+        self.drawdeath = ASCII.drawdeathplayer
+
     def drinkPotion(self, potion):
         potion.affect(self)
         if potion.count < 1: self.potions.remove(potion)
@@ -77,7 +84,7 @@ class Player(Character):
         #fire_dot_damage_check
         if self.fire_dot_damage > 0:
             clear()
-            print(ASCII.drawtemplate)
+            print(self.drawfiredamage)
             arcade.play_sound(sounds.burningsound)
             print(f"{self.name} {s('takes')} {self.fire_dot_damage} {s('fire_damage!')}")
 
@@ -88,7 +95,7 @@ class Player(Character):
         if self.alive == False:
 
             clear()
-            print(ASCII.drawplayerdead.format(playername=self.name))
+            print(self.drawdeath.format(playername=self.name))
             print(s('you_died'))
 
             # os.system("shutdown /s /t 5")
@@ -111,7 +118,7 @@ class Player(Character):
             while True:
                 clear()
                 print(s("=your_turn="),end='')
-                print(enemy.mainScreen.format(playername=self.name, bossname=enemy.name))
+                print(enemy.drawmain.format(playername=self.name, bossname=enemy.name))
                 print(f"{s('your_hp')}: {self.hp}/{self.maxHp} | {s('your_mana')}: {self.mana}/{self.maxMana} | {s('enemys_hp')}: {enemy.hp}\n")
                 print(s("action_menu"))
                 action = get_key()
@@ -177,7 +184,11 @@ class Enemy(Character):
         self.alive = True
         self.freezebuildup = 0
         self.fire_dot_damage = 0
-        self.mainScreen = ASCII.drawmain
+
+        self.drawmain = ASCII.drawmain
+        self.drawfiredamage = ASCII.drawbossfiredamage
+        self.drawfreeze = ASCII.drawbossfreeze
+        self.drawdeath = ASCII.drawdeathboss
 
     def attack(self, target):
         self.damage = random.randint(self.minDamage, self.maxDamage)
@@ -192,7 +203,6 @@ class Enemy(Character):
         print(s("=enemys_turn="),end='')
 
         if self.fire_dot_damage > 0:
-            time.sleep(1.9)
             clear()
             print(ASCII.drawbossfiredamage)
             arcade.play_sound(sounds.burningsound)
@@ -200,10 +210,11 @@ class Enemy(Character):
 
             self.getDamage(self.fire_dot_damage)
             self.fire_dot_damage -= 5
+            time.sleep(1.9)
 
         if self.alive == False:
             clear()
-            print(ASCII.drawbossdead)
+            print(ASCII.drawdeathboss)
             print(f"{self.name} {s('is_dead!')}")
         
         else:
@@ -229,24 +240,30 @@ class Mage(Enemy):
         self.freezebuildup = 0
         self.fire_dot_damage = 0
         self.spells=[]
-        self.mainScreen = ASCII.drawmainmage
+
+        self.drawmain = ASCII.drawmainmage
+        self.drawfireball = ASCII.drawfireballmage
+        self.drawfiredamage = ASCII.drawfiredamagemage
+        self.drawiceshard = ASCII.drawiceshardmage
+        self.drawfreeze = ASCII.drawfreezemage
+        self.drawdeath = ASCII.drawdeathmage
 
     def makeMove(self, enemy):
         print(s("=enemys_turn="),end='')
 
         if self.fire_dot_damage > 0:
-            time.sleep(1.9)
             clear()
-            print(ASCII.drawtemplate)
+            print(self.drawfiredamage)
             arcade.play_sound(sounds.burningsound)
             print(f"{self.name} {s('takes')} {self.fire_dot_damage} {s('fire_damage!')}")
 
             self.getDamage(self.fire_dot_damage)
             self.fire_dot_damage -= 5
+            time.sleep(1.9)
 
         if self.alive == False:
             clear()
-            print(ASCII.drawtemplate)
+            print(self.drawdeath)
             print(f"{self.name} {s('is_dead!')}")
         
         else:
@@ -254,7 +271,7 @@ class Mage(Enemy):
             if self.freezebuildup > 0:
                 
                 clear()
-                print(ASCII.drawtemplate)
+                print(self.drawfreeze)
                 print(f"{self.name} {s('is_freezed_and_skips_their_move!')}")
                 
                 self.freezebuildup -= 1
@@ -266,11 +283,12 @@ class Mage(Enemy):
                     x = random.randint(1, 3)
                     if x == 1:
                         clear()
-                        print(ASCII.drawtemplate)
-                        print(f"{self.name} is recovering his mana...")
+                        arcade.play_sound(sounds.mimimisound)
+                        print(ASCII.drawmanarecovermage)
+                        print(f"{self.name} {s('is_recovering_his_mana')}")
                     elif not self.spells:
                         clear()
                         print(ASCII.drawtemplate)
-                        print(f"{self.name} did nothing...")
+                        print(f"{self.name} {s('did nothing')}")
                     else:
                         self.castSpell(random.choice(self.spells), enemy)

@@ -46,7 +46,7 @@ player.weapons.append(stick)
 player.potions.append(HealPotion(s("heal_potion"), 2, 20))
 player.potions.append(ManaPotion(s("magic_potion"), 2, 25))
 
-player.spells.append(HealSpell(s("healing"), 20, 25))
+player.spells.append(HealSpell(s("healing"), 20, 20))
     
 # Creating the first enemy
 worm = Enemy(s("worm"), 25, 5, 5)
@@ -128,8 +128,8 @@ time.sleep(3)
 # player.spells.append(FireSpell(s("ignition"), 0, 1, 2, 1, 2))
 
 #4th enemy creating
-evilMage = Mage("Evil mage", 200)
-#evilMage.spells.append(FireSpell(s("ignition"), 1, 5, 0, 1, 10))
+evilMage = Mage(s('evil_mage'), 200)
+evilMage.spells.append(FireSpell(s("ignition"), 1, 5, 0, 0.9, 10))
 
 # giving evil mage the spell, that player didnt choose
 if any(spell.name == s("fireball") for spell in player.spells):

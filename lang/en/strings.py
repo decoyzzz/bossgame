@@ -57,5 +57,9 @@ strings = {
     "crit" : "Crit",
     "heals" : "Heals",
     "freeze" : "Freeze",
-    "snow_avalanche" : "Snow Avalanche"
+    "snow_avalanche" : "Snow Avalanche",
+    'is_recovering_his_mana' : "is recovering his mana...",
+    'did_nothing' : "did nothing...",
+    'casts' : "casts",
+    'evil_mage' : "Evil mage"
 }

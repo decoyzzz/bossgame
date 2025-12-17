@@ -57,5 +57,9 @@ strings = {
     "crit" : "Kryt",
     "heals" : "Regeneruje",
     "freeze" : "Zamrożenie",
-    "snow_avalanche" : "Lawina Śnieżna"
+    "snow_avalanche" : "Lawina Śnieżna",
+    'is_recovering_his_mana' : "regenruję swoją manę...",
+    'did_nothing' : "nic nie robi...",
+    'casts' : "rzuca",
+    'evil_mage' : "Zły mag"
 }
